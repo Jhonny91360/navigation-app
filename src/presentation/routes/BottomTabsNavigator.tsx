@@ -1,10 +1,14 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/react-in-jsx-scope */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Tab1Screen} from '../screens/tabs/Tab1Screen';
-import {Tab2Screen} from '../screens/tabs/Tab2Screen';
-import {Tab3Screen} from '../screens/tabs/Tab3Screen';
+//import {Tab2Screen} from '../screens/tabs/Tab2Screen';
+//import {Tab3Screen} from '../screens/tabs/Tab3Screen';
 import {globalColors} from '../theme/theme';
-import {Text} from 'react-native';
+//import {Text} from 'react-native';
+import {TopTapNavigator} from './TopTapNavigator';
+import {StackNavigator} from './StackNavigator';
+import {IonIcon} from '../components/shared/IonIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +18,7 @@ function BottomTabsNavigator() {
       sceneContainerStyle={{backgroundColor: globalColors.background}}
       screenOptions={{
         //headerShown: false,
+        tabBarActiveTintColor: globalColors.primary,
         tabBarLabelStyle: {
           marginBottom: 5,
         },
@@ -25,7 +30,9 @@ function BottomTabsNavigator() {
         name="Tab1"
         options={{
           title: 'Tab1',
-          tabBarIcon: ({color}) => <Text style={{color}}>Tab1</Text>,
+          tabBarIcon: ({color}) => (
+            <IonIcon name="game-controller-outline" color={color} />
+          ),
         }}
         component={Tab1Screen}
       />
@@ -33,17 +40,21 @@ function BottomTabsNavigator() {
         name="Tab2"
         options={{
           title: 'Tab2',
-          tabBarIcon: ({color}) => <Text style={{color}}> Tab2</Text>,
+          tabBarIcon: ({color}) => (
+            <IonIcon name="earth-outline" color={color} />
+          ),
         }}
-        component={Tab2Screen}
+        component={TopTapNavigator}
       />
       <Tab.Screen
         name="Tab3"
         options={{
           title: 'Tab3',
-          tabBarIcon: ({color}) => <Text style={{color}}>Tab3</Text>,
+          tabBarIcon: ({color}) => (
+            <IonIcon name="git-compare-outline" color={color} />
+          ),
         }}
-        component={Tab3Screen}
+        component={StackNavigator}
       />
     </Tab.Navigator>
   );

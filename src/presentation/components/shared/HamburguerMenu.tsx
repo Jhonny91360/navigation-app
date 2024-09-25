@@ -2,7 +2,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {Pressable, Text} from 'react-native';
+import {Pressable} from 'react-native';
+import {IonIcon} from './IonIcon';
 
 export const HamburguerMenu = () => {
   const navigation = useNavigation();
@@ -10,8 +11,9 @@ export const HamburguerMenu = () => {
     navigation.setOptions({
       headerLeft: () => (
         <Pressable
+          style={{marginLeft: 10}}
           onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-          <Text>Menú</Text>
+          <IonIcon name="menu-outline" />
         </Pressable>
       ),
     });
